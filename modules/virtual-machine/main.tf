@@ -98,19 +98,19 @@ resource "azurerm_linux_virtual_machine" "this" {
 resource "azurerm_windows_virtual_machine" "this" {
   count = var.os_type == "Windows" ? 1 : 0
 
-  name                     = var.name
-  location                 = var.location
-  resource_group_name      = var.resource_group_name
-  size                     = var.vm_size
-  admin_username           = var.admin_username
-  admin_password           = var.admin_password
-  computer_name            = var.computer_name != null ? var.computer_name : var.name
-  availability_set_id      = var.availability_set_id
-  zone                     = var.zone
-  patch_mode               = var.patch_mode
-  patch_assessment_mode    = var.patch_assessment_mode
-  enable_automatic_updates = var.enable_automatic_updates
-  timezone                 = var.timezone
+  name                       = var.name
+  location                   = var.location
+  resource_group_name        = var.resource_group_name
+  size                       = var.vm_size
+  admin_username             = var.admin_username
+  admin_password             = var.admin_password
+  computer_name              = var.computer_name != null ? var.computer_name : var.name
+  availability_set_id        = var.availability_set_id
+  zone                       = var.zone
+  patch_mode                 = var.patch_mode
+  patch_assessment_mode      = var.patch_assessment_mode
+  enable_automatic_updates   = var.enable_automatic_updates
+  timezone                   = var.timezone
   encryption_at_host_enabled = var.encryption_at_host_enabled
 
   network_interface_ids = [

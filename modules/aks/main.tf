@@ -1,16 +1,16 @@
 resource "azurerm_kubernetes_cluster" "this" {
-  name                              = var.name
-  location                          = var.location
-  resource_group_name               = var.resource_group_name
-  dns_prefix                        = var.dns_prefix
-  kubernetes_version                = var.kubernetes_version
-  private_cluster_enabled           = var.private_cluster_enabled
-  sku_tier                          = var.sku_tier
-  workload_identity_enabled         = var.workload_identity_enabled
-  oidc_issuer_enabled               = var.oidc_issuer_enabled
-  azure_policy_enabled              = var.azure_policy_enabled
-  local_account_disabled            = var.local_account_disabled
-  automatic_channel_upgrade         = var.automatic_channel_upgrade
+  name                      = var.name
+  location                  = var.location
+  resource_group_name       = var.resource_group_name
+  dns_prefix                = var.dns_prefix
+  kubernetes_version        = var.kubernetes_version
+  private_cluster_enabled   = var.private_cluster_enabled
+  sku_tier                  = var.sku_tier
+  workload_identity_enabled = var.workload_identity_enabled
+  oidc_issuer_enabled       = var.oidc_issuer_enabled
+  azure_policy_enabled      = var.azure_policy_enabled
+  local_account_disabled    = var.local_account_disabled
+  automatic_channel_upgrade = var.automatic_channel_upgrade
 
   default_node_pool {
     name                = var.default_node_pool.name
@@ -37,12 +37,12 @@ resource "azurerm_kubernetes_cluster" "this" {
   }
 
   network_profile {
-    network_plugin     = var.network_profile.network_plugin
-    network_policy     = lookup(var.network_profile, "network_policy", null)
-    dns_service_ip     = lookup(var.network_profile, "dns_service_ip", null)
-    service_cidr       = lookup(var.network_profile, "service_cidr", null)
-    load_balancer_sku  = lookup(var.network_profile, "load_balancer_sku", "standard")
-    outbound_type      = lookup(var.network_profile, "outbound_type", "loadBalancer")
+    network_plugin    = var.network_profile.network_plugin
+    network_policy    = lookup(var.network_profile, "network_policy", null)
+    dns_service_ip    = lookup(var.network_profile, "dns_service_ip", null)
+    service_cidr      = lookup(var.network_profile, "service_cidr", null)
+    load_balancer_sku = lookup(var.network_profile, "load_balancer_sku", "standard")
+    outbound_type     = lookup(var.network_profile, "outbound_type", "loadBalancer")
   }
 
   dynamic "azure_active_directory_role_based_access_control" {

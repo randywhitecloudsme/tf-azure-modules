@@ -146,7 +146,7 @@ variable "azure_endpoints" {
     priority           = optional(number)
     enabled            = optional(bool)
     geo_mappings       = optional(list(string))
-    custom_headers     = optional(list(object({
+    custom_headers = optional(list(object({
       name  = string
       value = string
     })))
@@ -162,12 +162,12 @@ variable "azure_endpoints" {
 variable "external_endpoints" {
   description = "List of external endpoints"
   type = list(object({
-    name           = string
-    target         = string
-    weight         = optional(number)
-    priority       = optional(number)
-    enabled        = optional(bool)
-    geo_mappings   = optional(list(string))
+    name         = string
+    target       = string
+    weight       = optional(number)
+    priority     = optional(number)
+    enabled      = optional(bool)
+    geo_mappings = optional(list(string))
     custom_headers = optional(list(object({
       name  = string
       value = string
@@ -191,7 +191,7 @@ variable "nested_endpoints" {
     priority                = optional(number)
     enabled                 = optional(bool)
     geo_mappings            = optional(list(string))
-    custom_headers          = optional(list(object({
+    custom_headers = optional(list(object({
       name  = string
       value = string
     })))

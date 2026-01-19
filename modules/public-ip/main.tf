@@ -14,7 +14,7 @@ resource "azurerm_public_ip" "this" {
   edge_zone               = var.edge_zone
   ip_tags                 = var.ip_tags
 
-  ddos_protection_mode = var.ddos_protection_mode
+  ddos_protection_mode    = var.ddos_protection_mode
   ddos_protection_plan_id = var.ddos_protection_mode == "Enabled" && var.ddos_protection_plan_id == null ? null : var.ddos_protection_plan_id
 
   tags = var.tags

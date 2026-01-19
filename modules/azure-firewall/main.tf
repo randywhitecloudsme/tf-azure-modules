@@ -103,7 +103,6 @@ resource "azurerm_firewall_policy" "this" {
           destination_addresses = lookup(traffic_bypass.value, "destination_addresses", null)
           destination_ports     = lookup(traffic_bypass.value, "destination_ports", null)
           source_addresses      = lookup(traffic_bypass.value, "source_addresses", null)
-          source_ports          = lookup(traffic_bypass.value, "source_ports", null)
         }
       }
     }

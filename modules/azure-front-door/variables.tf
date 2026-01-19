@@ -40,16 +40,16 @@ variable "endpoints" {
 variable "origin_groups" {
   description = "List of origin groups"
   type = list(object({
-    name                              = string
-    sample_size                       = optional(number)
-    successful_samples_required       = optional(number)
-    additional_latency_milliseconds   = optional(number)
-    health_probe_enabled              = optional(bool)
-    health_probe_protocol             = optional(string)
-    health_probe_interval             = optional(number)
-    health_probe_path                 = optional(string)
-    health_probe_request_type         = optional(string)
-    session_affinity_enabled          = optional(bool)
+    name                            = string
+    sample_size                     = optional(number)
+    successful_samples_required     = optional(number)
+    additional_latency_milliseconds = optional(number)
+    health_probe_enabled            = optional(bool)
+    health_probe_protocol           = optional(string)
+    health_probe_interval           = optional(number)
+    health_probe_path               = optional(string)
+    health_probe_request_type       = optional(string)
+    session_affinity_enabled        = optional(bool)
   }))
 
   validation {
@@ -86,23 +86,23 @@ variable "origins" {
 variable "routes" {
   description = "List of routes"
   type = list(object({
-    name                           = string
-    endpoint_name                  = string
-    origin_group_name              = string
-    origin_names                   = list(string)
-    enabled                        = optional(bool)
-    forwarding_protocol            = optional(string)
-    https_redirect_enabled         = optional(bool)
-    patterns_to_match              = optional(list(string))
-    supported_protocols            = optional(list(string))
-    custom_domain_names            = optional(list(string))
-    link_to_default_domain         = optional(bool)
-    cache_enabled                  = optional(bool)
-    query_string_caching_behavior  = optional(string)
-    query_strings                  = optional(list(string))
-    compression_enabled            = optional(bool)
-    content_types_to_compress      = optional(list(string))
-    rule_set_names                 = optional(list(string))
+    name                          = string
+    endpoint_name                 = string
+    origin_group_name             = string
+    origin_names                  = list(string)
+    enabled                       = optional(bool)
+    forwarding_protocol           = optional(string)
+    https_redirect_enabled        = optional(bool)
+    patterns_to_match             = optional(list(string))
+    supported_protocols           = optional(list(string))
+    custom_domain_names           = optional(list(string))
+    link_to_default_domain        = optional(bool)
+    cache_enabled                 = optional(bool)
+    query_string_caching_behavior = optional(string)
+    query_strings                 = optional(list(string))
+    compression_enabled           = optional(bool)
+    content_types_to_compress     = optional(list(string))
+    rule_set_names                = optional(list(string))
   }))
 
   validation {

@@ -8,12 +8,12 @@ resource "azurerm_private_dns_zone" "this" {
     for_each = var.soa_record != null ? [var.soa_record] : []
 
     content {
-      email         = soa_record.value.email
-      expire_time   = lookup(soa_record.value, "expire_time", 2419200)
-      minimum_ttl   = lookup(soa_record.value, "minimum_ttl", 10)
-      refresh_time  = lookup(soa_record.value, "refresh_time", 3600)
-      retry_time    = lookup(soa_record.value, "retry_time", 300)
-      ttl           = lookup(soa_record.value, "ttl", 3600)
+      email        = soa_record.value.email
+      expire_time  = lookup(soa_record.value, "expire_time", 2419200)
+      minimum_ttl  = lookup(soa_record.value, "minimum_ttl", 10)
+      refresh_time = lookup(soa_record.value, "refresh_time", 3600)
+      retry_time   = lookup(soa_record.value, "retry_time", 300)
+      ttl          = lookup(soa_record.value, "ttl", 3600)
     }
   }
 

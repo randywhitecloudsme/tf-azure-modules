@@ -38,13 +38,13 @@ module "front_door" {
   # Origin group with health probes
   origin_groups = [
     {
-      name                            = "example-origin-group"
-      health_probe_enabled            = true
-      health_probe_protocol           = "Https"
-      health_probe_path               = "/"
-      health_probe_interval           = 100
-      sample_size                     = 4
-      successful_samples_required     = 3
+      name                        = "example-origin-group"
+      health_probe_enabled        = true
+      health_probe_protocol       = "Https"
+      health_probe_path           = "/"
+      health_probe_interval       = 100
+      sample_size                 = 4
+      successful_samples_required = 3
     }
   ]
 

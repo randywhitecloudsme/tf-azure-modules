@@ -31,10 +31,10 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
     primary = true
 
     ip_configuration {
-      name                                   = "internal"
-      primary                                = true
-      subnet_id                              = var.subnet_id
-      load_balancer_backend_address_pool_ids = var.load_balancer_backend_address_pool_ids
+      name                                         = "internal"
+      primary                                      = true
+      subnet_id                                    = var.subnet_id
+      load_balancer_backend_address_pool_ids       = var.load_balancer_backend_address_pool_ids
       application_gateway_backend_address_pool_ids = var.application_gateway_backend_address_pool_ids
     }
   }
@@ -124,21 +124,21 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
 resource "azurerm_windows_virtual_machine_scale_set" "this" {
   count = var.os_type == "Windows" ? 1 : 0
 
-  name                     = var.name
-  location                 = var.location
-  resource_group_name      = var.resource_group_name
-  sku                      = var.sku
-  instances                = var.instances
-  admin_username           = var.admin_username
-  admin_password           = var.admin_password
-  computer_name_prefix     = var.computer_name_prefix != null ? var.computer_name_prefix : var.name
-  overprovision            = var.overprovision
-  single_placement_group   = var.single_placement_group
-  upgrade_mode             = var.upgrade_mode
-  zone_balance             = var.zone_balance
-  zones                    = var.zones
-  enable_automatic_updates = var.enable_automatic_updates
-  timezone                 = var.timezone
+  name                       = var.name
+  location                   = var.location
+  resource_group_name        = var.resource_group_name
+  sku                        = var.sku
+  instances                  = var.instances
+  admin_username             = var.admin_username
+  admin_password             = var.admin_password
+  computer_name_prefix       = var.computer_name_prefix != null ? var.computer_name_prefix : var.name
+  overprovision              = var.overprovision
+  single_placement_group     = var.single_placement_group
+  upgrade_mode               = var.upgrade_mode
+  zone_balance               = var.zone_balance
+  zones                      = var.zones
+  enable_automatic_updates   = var.enable_automatic_updates
+  timezone                   = var.timezone
   encryption_at_host_enabled = var.encryption_at_host_enabled
 
   network_interface {
@@ -146,10 +146,10 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
     primary = true
 
     ip_configuration {
-      name                                   = "internal"
-      primary                                = true
-      subnet_id                              = var.subnet_id
-      load_balancer_backend_address_pool_ids = var.load_balancer_backend_address_pool_ids
+      name                                         = "internal"
+      primary                                      = true
+      subnet_id                                    = var.subnet_id
+      load_balancer_backend_address_pool_ids       = var.load_balancer_backend_address_pool_ids
       application_gateway_backend_address_pool_ids = var.application_gateway_backend_address_pool_ids
     }
   }

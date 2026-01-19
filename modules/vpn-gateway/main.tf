@@ -141,12 +141,12 @@ resource "azurerm_virtual_network_gateway_connection" "site_to_site" {
   virtual_network_gateway_id = azurerm_virtual_network_gateway.this.id
   local_network_gateway_id   = azurerm_local_network_gateway.this[each.value.local_network_gateway_key].id
 
-  shared_key                       = each.value.shared_key
-  connection_protocol              = lookup(each.value, "connection_protocol", "IKEv2")
-  dpd_timeout_seconds              = lookup(each.value, "dpd_timeout_seconds", null)
-  enable_bgp                       = lookup(each.value, "enable_bgp", false)
-  local_azure_ip_address_enabled   = lookup(each.value, "local_azure_ip_address_enabled", false)
-  peer_virtual_network_gateway_id  = lookup(each.value, "peer_virtual_network_gateway_id", null)
+  shared_key                         = each.value.shared_key
+  connection_protocol                = lookup(each.value, "connection_protocol", "IKEv2")
+  dpd_timeout_seconds                = lookup(each.value, "dpd_timeout_seconds", null)
+  enable_bgp                         = lookup(each.value, "enable_bgp", false)
+  local_azure_ip_address_enabled     = lookup(each.value, "local_azure_ip_address_enabled", false)
+  peer_virtual_network_gateway_id    = lookup(each.value, "peer_virtual_network_gateway_id", null)
   use_policy_based_traffic_selectors = lookup(each.value, "use_policy_based_traffic_selectors", false)
 
   dynamic "ipsec_policy" {
@@ -188,10 +188,10 @@ resource "azurerm_virtual_network_gateway_connection" "vnet_to_vnet" {
   virtual_network_gateway_id      = azurerm_virtual_network_gateway.this.id
   peer_virtual_network_gateway_id = each.value.peer_virtual_network_gateway_id
 
-  shared_key                  = each.value.shared_key
-  connection_protocol         = lookup(each.value, "connection_protocol", "IKEv2")
-  dpd_timeout_seconds         = lookup(each.value, "dpd_timeout_seconds", null)
-  enable_bgp                  = lookup(each.value, "enable_bgp", false)
+  shared_key                     = each.value.shared_key
+  connection_protocol            = lookup(each.value, "connection_protocol", "IKEv2")
+  dpd_timeout_seconds            = lookup(each.value, "dpd_timeout_seconds", null)
+  enable_bgp                     = lookup(each.value, "enable_bgp", false)
   local_azure_ip_address_enabled = lookup(each.value, "local_azure_ip_address_enabled", false)
 
   dynamic "ipsec_policy" {

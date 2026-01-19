@@ -82,12 +82,12 @@ resource "azurerm_subnet_network_security_group_association" "this" {
 resource "azurerm_network_watcher_flow_log" "this" {
   for_each = var.enable_flow_logs && var.log_analytics_workspace_id != null ? var.network_security_groups : {}
 
-  name                 = "${each.value.name}-flow-log"
-  network_watcher_name = var.network_watcher_name
-  resource_group_name  = var.network_watcher_resource_group_name
+  name                      = "${each.value.name}-flow-log"
+  network_watcher_name      = var.network_watcher_name
+  resource_group_name       = var.network_watcher_resource_group_name
   network_security_group_id = azurerm_network_security_group.this[each.key].id
-  storage_account_id   = var.flow_log_storage_account_id
-  enabled              = true
+  storage_account_id        = var.flow_log_storage_account_id
+  enabled                   = true
 
   retention_policy {
     enabled = true

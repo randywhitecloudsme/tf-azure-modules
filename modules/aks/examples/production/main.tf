@@ -92,8 +92,8 @@ module "aks" {
 
   # Key Vault integration
   key_vault_secrets_provider_enabled = true
-  secret_rotation_enabled             = true
-  secret_rotation_interval            = "2m"
+  secret_rotation_enabled            = true
+  secret_rotation_interval           = "2m"
 
   # Additional node pools
   additional_node_pools = {

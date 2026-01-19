@@ -43,14 +43,7 @@ resource "azurerm_traffic_manager_azure_endpoint" "azure_endpoints" {
   weight             = lookup(each.value, "weight", null)
   priority           = lookup(each.value, "priority", null)
   enabled            = lookup(each.value, "enabled", true)
-
-  dynamic "geo_mapping" {
-    for_each = lookup(each.value, "geo_mappings", null) != null ? each.value.geo_mappings : []
-
-    content {
-      country = geo_mapping.value
-    }
-  }
+  geo_mappings       = lookup(each.value, "geo_mappings", null)
 
   dynamic "custom_header" {
     for_each = lookup(each.value, "custom_headers", [])
@@ -75,20 +68,13 @@ resource "azurerm_traffic_manager_azure_endpoint" "azure_endpoints" {
 resource "azurerm_traffic_manager_external_endpoint" "external_endpoints" {
   for_each = { for ep in var.external_endpoints : ep.name => ep }
 
-  name       = each.value.name
-  profile_id = azurerm_traffic_manager_profile.this.id
-  target     = each.value.target
-  weight     = lookup(each.value, "weight", null)
-  priority   = lookup(each.value, "priority", null)
-  enabled    = lookup(each.value, "enabled", true)
-
-  dynamic "geo_mapping" {
-    for_each = lookup(each.value, "geo_mappings", null) != null ? each.value.geo_mappings : []
-
-    content {
-      country = geo_mapping.value
-    }
-  }
+  name         = each.value.name
+  profile_id   = azurerm_traffic_manager_profile.this.id
+  target       = each.value.target
+  weight       = lookup(each.value, "weight", null)
+  priority     = lookup(each.value, "priority", null)
+  enabled      = lookup(each.value, "enabled", true)
+  geo_mappings = lookup(each.value, "geo_mappings", null)
 
   dynamic "custom_header" {
     for_each = lookup(each.value, "custom_headers", [])
@@ -120,14 +106,7 @@ resource "azurerm_traffic_manager_nested_endpoint" "nested_endpoints" {
   weight                  = lookup(each.value, "weight", null)
   priority                = lookup(each.value, "priority", null)
   enabled                 = lookup(each.value, "enabled", true)
-
-  dynamic "geo_mapping" {
-    for_each = lookup(each.value, "geo_mappings", null) != null ? each.value.geo_mappings : []
-
-    content {
-      country = geo_mapping.value
-    }
-  }
+  geo_mappings            = lookup(each.value, "geo_mappings", null)
 
   dynamic "custom_header" {
     for_each = lookup(each.value, "custom_headers", [])

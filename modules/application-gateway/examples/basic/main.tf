@@ -8,7 +8,7 @@ module "app_gateway_basic" {
 
   backend_address_pools = [
     {
-      name = "backend-pool"
+      name  = "backend-pool"
       fqdns = ["example.com"]
     }
   ]

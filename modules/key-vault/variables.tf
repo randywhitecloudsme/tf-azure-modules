@@ -103,8 +103,7 @@ variable "secrets" {
     content_type = optional(string)
     tags         = optional(map(string))
   }))
-  default   = {}
-  sensitive = true
+  default = {}
 }
 
 variable "enable_private_endpoint" {

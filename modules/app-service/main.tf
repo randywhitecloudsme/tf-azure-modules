@@ -29,12 +29,12 @@ resource "azurerm_linux_web_app" "this" {
       for_each = var.application_stack != null ? [var.application_stack] : []
 
       content {
-        docker_image_name   = lookup(application_stack.value, "docker_image_name", null)
-        dotnet_version      = lookup(application_stack.value, "dotnet_version", null)
-        java_version        = lookup(application_stack.value, "java_version", null)
-        node_version        = lookup(application_stack.value, "node_version", null)
-        python_version      = lookup(application_stack.value, "python_version", null)
-        php_version         = lookup(application_stack.value, "php_version", null)
+        docker_image_name = lookup(application_stack.value, "docker_image_name", null)
+        dotnet_version    = lookup(application_stack.value, "dotnet_version", null)
+        java_version      = lookup(application_stack.value, "java_version", null)
+        node_version      = lookup(application_stack.value, "node_version", null)
+        python_version    = lookup(application_stack.value, "python_version", null)
+        php_version       = lookup(application_stack.value, "php_version", null)
       }
     }
   }
@@ -93,12 +93,12 @@ resource "azurerm_windows_web_app" "this" {
       for_each = var.application_stack != null ? [var.application_stack] : []
 
       content {
-        current_stack       = lookup(application_stack.value, "current_stack", null)
-        dotnet_version      = lookup(application_stack.value, "dotnet_version", null)
-        java_version        = lookup(application_stack.value, "java_version", null)
-        node_version        = lookup(application_stack.value, "node_version", null)
-        python_version      = lookup(application_stack.value, "python_version", null)
-        php_version         = lookup(application_stack.value, "php_version", null)
+        current_stack  = lookup(application_stack.value, "current_stack", null)
+        dotnet_version = lookup(application_stack.value, "dotnet_version", null)
+        java_version   = lookup(application_stack.value, "java_version", null)
+        node_version   = lookup(application_stack.value, "node_version", null)
+        python_version = lookup(application_stack.value, "python_version", null)
+        php_version    = lookup(application_stack.value, "php_version", null)
       }
     }
   }

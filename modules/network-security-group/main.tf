@@ -29,19 +29,8 @@ resource "azurerm_network_security_rule" "this" {
   network_security_group_name  = azurerm_network_security_group.this.name
   description                  = lookup(each.value, "description", null)
 
-  dynamic "source_application_security_group_ids" {
-    for_each = lookup(each.value, "source_application_security_group_ids", null) != null ? [1] : []
-    content {
-      id = each.value.source_application_security_group_ids
-    }
-  }
-
-  dynamic "destination_application_security_group_ids" {
-    for_each = lookup(each.value, "destination_application_security_group_ids", null) != null ? [1] : []
-    content {
-      id = each.value.destination_application_security_group_ids
-    }
-  }
+  source_application_security_group_ids      = lookup(each.value, "source_application_security_group_ids", null)
+  destination_application_security_group_ids = lookup(each.value, "destination_application_security_group_ids", null)
 }
 
 resource "azurerm_subnet_network_security_group_association" "this" {

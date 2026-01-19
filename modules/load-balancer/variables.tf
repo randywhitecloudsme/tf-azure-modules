@@ -229,13 +229,13 @@ variable "inbound_nat_rules" {
 variable "outbound_rules" {
   description = "Map of outbound rules (Standard SKU only)"
   type = map(object({
-    name                           = string
-    protocol                       = string
-    backend_address_pool_name      = string
+    name                            = string
+    protocol                        = string
+    backend_address_pool_name       = string
     frontend_ip_configuration_names = list(string)
-    allocated_outbound_ports       = optional(number)
-    idle_timeout_in_minutes        = optional(number)
-    enable_tcp_reset               = optional(bool)
+    allocated_outbound_ports        = optional(number)
+    idle_timeout_in_minutes         = optional(number)
+    enable_tcp_reset                = optional(bool)
   }))
   default = {}
 

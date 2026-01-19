@@ -95,15 +95,6 @@ resource "azurerm_private_endpoint" "blob" {
   tags = var.tags
 }
 
-resource "azurerm_private_dns_zone_group" "blob" {
-  count = var.enable_private_endpoint && var.private_dns_zone_ids != null ? 1 : 0
-
-  name                 = "${var.name}-blob-dns-group"
-  resource_group_name  = var.resource_group_name
-  private_endpoint_id  = azurerm_private_endpoint.blob[0].id
-  private_dns_zone_ids = var.private_dns_zone_ids
-}
-
 # Diagnostic Settings
 resource "azurerm_monitor_diagnostic_setting" "this" {
   count = var.log_analytics_workspace_id != null ? 1 : 0

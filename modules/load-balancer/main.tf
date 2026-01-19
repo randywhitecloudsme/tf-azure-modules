@@ -69,11 +69,11 @@ resource "azurerm_lb_backend_address_pool_address" "this" {
 resource "azurerm_lb_probe" "this" {
   for_each = var.health_probes
 
-  name            = each.value.name
-  loadbalancer_id = azurerm_lb.this.id
-  protocol        = each.value.protocol
-  port            = each.value.port
-  request_path    = lookup(each.value, "request_path", null)
+  name                = each.value.name
+  loadbalancer_id     = azurerm_lb.this.id
+  protocol            = each.value.protocol
+  port                = each.value.port
+  request_path        = lookup(each.value, "request_path", null)
   interval_in_seconds = lookup(each.value, "interval_in_seconds", 15)
   number_of_probes    = lookup(each.value, "number_of_probes", 2)
   probe_threshold     = lookup(each.value, "probe_threshold", 1)
@@ -121,10 +121,10 @@ resource "azurerm_lb_nat_rule" "this" {
 resource "azurerm_lb_outbound_rule" "this" {
   for_each = var.outbound_rules
 
-  name                    = each.value.name
-  loadbalancer_id         = azurerm_lb.this.id
-  protocol                = each.value.protocol
-  backend_address_pool_id = azurerm_lb_backend_address_pool.this[each.value.backend_address_pool_name].id
+  name                     = each.value.name
+  loadbalancer_id          = azurerm_lb.this.id
+  protocol                 = each.value.protocol
+  backend_address_pool_id  = azurerm_lb_backend_address_pool.this[each.value.backend_address_pool_name].id
   allocated_outbound_ports = lookup(each.value, "allocated_outbound_ports", null)
   idle_timeout_in_minutes  = lookup(each.value, "idle_timeout_in_minutes", 4)
   enable_tcp_reset         = lookup(each.value, "enable_tcp_reset", false)

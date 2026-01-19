@@ -171,13 +171,13 @@ variable "local_network_gateways" {
 variable "site_to_site_connections" {
   description = "Map of Site-to-Site VPN connections"
   type = map(object({
-    name                        = string
-    local_network_gateway_key   = string
-    shared_key                  = string
-    connection_protocol         = optional(string)
-    dpd_timeout_seconds         = optional(number)
-    enable_bgp                  = optional(bool)
-    local_azure_ip_address_enabled = optional(bool)
+    name                               = string
+    local_network_gateway_key          = string
+    shared_key                         = string
+    connection_protocol                = optional(string)
+    dpd_timeout_seconds                = optional(number)
+    enable_bgp                         = optional(bool)
+    local_azure_ip_address_enabled     = optional(bool)
     use_policy_based_traffic_selectors = optional(bool)
     ipsec_policy = optional(object({
       dh_group         = string
@@ -194,8 +194,7 @@ variable "site_to_site_connections" {
       remote_address_cidrs = list(string)
     })))
   }))
-  default   = {}
-  sensitive = true
+  default = {}
 
   validation {
     condition = alltrue([
@@ -229,8 +228,7 @@ variable "vnet_to_vnet_connections" {
       sa_lifetime      = optional(number)
     }))
   }))
-  default   = {}
-  sensitive = true
+  default = {}
 }
 
 # Diagnostic Settings
