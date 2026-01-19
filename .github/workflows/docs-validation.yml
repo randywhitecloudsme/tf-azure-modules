@@ -1,0 +1,39 @@
+name: Documentation Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-docs:
+    name: Validate Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check for README in modules
+        run: |
+          for module in modules/*/; do
+            if [ ! -f "${module}README.md" ]; then
+              echo "Missing README.md in ${module}"
+              exit 1
+            fi
+          done
+
+      - name: Check for examples
+        run: |
+          for module in modules/*/; do
+            if [ ! -d "${module}examples" ]; then
+              echo "Missing examples directory in ${module}"
+              exit 1
+            fi
+          done
+
+      - name: Markdown Lint
+        uses: nosborn/github-action-markdown-cli@v3.3.0
+        with:
+          files: .
+          config_file: .markdownlint.json
+          ignore_files: .github/
